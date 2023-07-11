@@ -80,8 +80,8 @@ const Burger = () => {
                 <div className='lowerPopup'>
                     <p><strong>Total Price: ${returnPrice()}</strong></p>
                     <p>Continue to check out?</p>
-                    <Link to='/checkout'><button className='continue' onClick={JSON.parse(localStorage.getItem('data'))}>Continue</button></Link>
-                    <button className='cancel' onClick={() => closePopup()} >Cancel</button>
+                    <Link to='/checkout'><button className='continue' onClick={()=>localStorage.setItem('burgerData', JSON.stringify({lettuce, bacon, cheese, meat}))}>Continue</button></Link>
+                    <button className='cancel' onClick={() => closePopup()}>Cancel</button>
                 </div>
             </div>
             <div className="burger">
@@ -97,7 +97,7 @@ const Burger = () => {
                 <div className="ingredientsBlock">
                     <div className="buttonLine">
                         <p className="text"><strong>Lettuce</strong></p>
-                        <button className="less"  onClick={() => makeBurger('', 'lettuce')}>
+                        <button className="less" onClick={() => makeBurger('', 'lettuce')}>
                             Less
                         </button>
                         <button className="more" onClick={() => makeBurger('more', 'lettuce')}>
@@ -131,9 +131,8 @@ const Burger = () => {
                             More
                         </button>
                     </div>
-                    <button disabled={lettuce === 0 || bacon === 0 || cheese === 0 || meat === 0}
+                    <button disabled={lettuce === 0 && bacon === 0 && cheese === 0 && meat === 0}
                     className="order" type="submit" onClick={() => openPopup()}>Order Now!</button>
-                    {/* <Link to='checkout'><button className="order" type="submit" onClick={JSON.parse(localStorage.getItem('data'))}>Order Now!</button></Link> */}
                 </div>
             </div>
         </>

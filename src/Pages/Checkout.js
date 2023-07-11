@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
     const navigation = useNavigate();
-    const [userData, setUserData] = useState({
+    const [userDetails, setUserDetails] = useState({
         name: '',
         street: '',
         zipCode: '',
@@ -16,17 +16,36 @@ const Checkout = () => {
     });
 
     const handleChange = (e) => {
-        setUserData({
-            ...userData,
+        setUserDetails({
+            ...userDetails,
             [e.target.name]: e.target.value
         });
     };
     const submitForm = (e) => {
         e.preventDefault();
-        localStorage.setItem('usersData', JSON.stringify(userData));
+        // const burgerData = JSON.parse(localStorage.getItem('burgerData'));
+        // const userData = JSON.parse(localStorage.getItem('userData'));
+        // console.log("Before")
+        // console.log(userData)
+        // if(userData !== null)
+
+        // {
+        //     let index = userData.findIndex((user) => user.email === userData.email[index])
+            
+        //     if (index !== -1) {
+        //         console.log("After After")
+        //         console.log(userData[index  ])
+        //         userData[index]?.history?.push(burgerData);
+        //         if (window.confirm('Burger bs pohuncha smjho.')) {
+        //             navigation('home');
+        //         }
+        //     }
+        // }
+        // localStorage.setItem('userData', JSON.stringify(userData));
+        localStorage.setItem('userDetails', JSON.stringify(userDetails));
         if(window.confirm('Burger bs pohuncha smjho.'))
         {
-            navigation('/');
+            navigation('/home');
         }
     }
     return (
@@ -38,7 +57,7 @@ const Checkout = () => {
                     <div className="seeds1"></div>
                     <div className="seeds2"></div>
                 </div>
-                {displayBurger(JSON.parse(localStorage.getItem('data')))}
+                {displayBurger(JSON.parse(localStorage.getItem('burgerData')))}
                 <div className="bottom"></div>
             </div>
             <div>

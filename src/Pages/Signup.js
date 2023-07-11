@@ -1,13 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './SignupPage.module.css';
 import { useState } from 'react';
 import Navbar from '../Components/Navbar';
 
 function SignupPage() {
+  const navigation = useNavigate();
     const [userData, setUserData] = useState({
         email: '',
-        password: ''
+        password: '',
+        history: []
     });
     const handleChange = (e) => {
         setUserData({
@@ -17,7 +19,7 @@ function SignupPage() {
     };
     const submitForm = (e) => {
         e.preventDefault();
-        let AllData = JSON.parse(localStorage.getItem('usersData'));
+        let AllData = JSON.parse(localStorage.getItem('userData'));
         if (AllData === null) {
             AllData = [];
         }
@@ -27,8 +29,9 @@ function SignupPage() {
             return;
         }
         AllData.push(userData);
-        localStorage.setItem('usersData', JSON.stringify(AllData));
+        localStorage.setItem('userData', JSON.stringify(AllData));
         alert('User created successfully.')
+        navigation('/home')
     };
   return (
     <>

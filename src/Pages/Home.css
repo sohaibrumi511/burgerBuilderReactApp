@@ -241,6 +241,10 @@ button {
     margin-left: 41%;
     width: auto;
 }
+.order:disabled {
+  background-color: grey;
+  color: white;
+}
 
 .order2 {
   outline: none;

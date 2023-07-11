@@ -7,9 +7,10 @@ import Navbar from '../Components/Navbar';
 export default function Login() {
   const [userData, setUserData] = useState({
     email: '',
-    password: ''
+    password: '',
+    history:[]
 });
-const navigation=useNavigate();
+const navigation = useNavigate();
 
 const handleChange = (e) => {
     setUserData({
@@ -19,7 +20,7 @@ const handleChange = (e) => {
 };
 const submitForm = (e) => {
   e.preventDefault();
-  let allData = JSON.parse(localStorage.getItem('usersData'));
+  let allData = JSON.parse(localStorage.getItem('userData'));
   if (allData === null) {
     alert("User doesn't exist.")
       return
