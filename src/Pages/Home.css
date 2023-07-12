@@ -220,10 +220,16 @@ button {
   display: table;
   width: 100px;
 }
+
 .less  {
   background-color: #d39952;
   margin-right: 10%;
 }
+
+.less:disabled {
+  background-color: grey;
+}
+
 .more {
   background-color: #8f5e1e;
 }
@@ -297,6 +303,7 @@ button {
 }
 
 .lowerPopup {
+  margin-top: 2%;
   text-align: center;
 }
 .openPopup {

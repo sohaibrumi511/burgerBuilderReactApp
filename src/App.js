@@ -14,7 +14,7 @@ const App = () => {
         <Route exact path="/checkout" element={<Checkout />} />
       </Routes>
     </Router>
-  );  
+  );
 };
 
 export default App;
