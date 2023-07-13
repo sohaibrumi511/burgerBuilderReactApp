@@ -45,9 +45,15 @@ const counterSlice = createSlice({
           break;
       }
     },
+    resetIngredient: (state) => {
+      state.lettuce = 0;
+      state.bacon = 0;
+      state.cheese = 0;
+      state.meat = 0;
+    },
   },
 });
 
-export const { incrementIngredient, decrementIngredient } =
+export const { incrementIngredient, decrementIngredient, resetIngredient } =
   counterSlice.actions;
 export default counterSlice.reducer;

@@ -1,8 +1,13 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { resetIngredient } from '../reducers/counter';
+import { resetPrice } from '../reducers/priceCalculator';
+
 import './Home.css';
 import Navbar from '../Components/Navbar';
 import { displayBurger } from '../utils/displayBurger';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
   const navigation = useNavigate();
@@ -13,6 +18,15 @@ const Checkout = () => {
     country: '',
     email: '',
   });
+  const lettuce = useSelector((state) => state?.rootReducer?.counter?.lettuce);
+  const bacon = useSelector((state) => state?.rootReducer?.counter?.bacon);
+  const cheese = useSelector((state) => state?.rootReducer?.counter?.cheese);
+  const meat = useSelector((state) => state?.rootReducer?.counter?.meat);
+  const price = useSelector(
+    (state) => state?.rootReducer?.priceCalculator?.price,
+  );
+
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setUserDetails({
@@ -22,25 +36,13 @@ const Checkout = () => {
   };
   const submitForm = (e) => {
     e.preventDefault();
-    // const burgerData = JSON.parse(localStorage.getItem('burgerData'));
-    // const userData = JSON.parse(localStorage.getItem('userData'));
-    // console.log("Before")
-    // console.log(userData)
-    // if(userData !== null)
-
-    // {
-    //     let index = userData.findIndex((user) => user.email === userData.email[index])
-
-    //     if (index !== -1) {
-    //         console.log("After After")
-    //         console.log(userData[index  ])
-    //         userData[index]?.history?.push(burgerData);
-    //
-    //     }
-    // }
-    // localStorage.setItem('userData', JSON.stringify(userData));
     localStorage.setItem('userDetails', JSON.stringify(userDetails));
     if (window.confirm('Burger bs pohuncha smjho.')) {
+      dispatch(resetIngredient('lettuce'));
+      dispatch(resetIngredient('bacon'));
+      dispatch(resetIngredient('cheese'));
+      dispatch(resetIngredient('meat'));
+      dispatch(resetPrice());
       navigation('/home');
     }
   };

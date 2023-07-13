@@ -43,8 +43,12 @@ const priceSlice = createSlice({
       }
       if (state.price < 3) state.price = 3;
     },
+    resetPrice: (state) => {
+      state.price = 3;
+    },
   },
 });
 
-export const { incrementPrice, decrementPrice } = priceSlice.actions;
+export const { incrementPrice, decrementPrice, resetPrice } =
+  priceSlice.actions;
 export default priceSlice.reducer;
