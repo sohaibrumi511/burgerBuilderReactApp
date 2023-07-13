@@ -2,21 +2,23 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const priceSlice = createSlice({
   name: 'Price Calculator',
-  initialState: 3,
+  initialState: {
+    price: 3,
+  },
   reducers: {
     incrementPrice: (state, action) => {
       switch (action.payload) {
         case 'lettuce':
-          state += 0.5;
+          state.price += 0.5;
           break;
         case 'bacon':
-          state += 0.7;
+          state.price += 0.7;
           break;
         case 'cheese':
-          state += 0.4;
+          state.price += 0.4;
           break;
         case 'meat':
-          state += 1.3;
+          state.price += 1.3;
           break;
         default:
           break;
@@ -25,21 +27,21 @@ const priceSlice = createSlice({
     decrementPrice: (state, action) => {
       switch (action.payload) {
         case 'lettuce':
-          state -= 0.5;
+          state.price -= 0.5;
           break;
         case 'bacon':
-          state -= 0.7;
+          state.price -= 0.7;
           break;
         case 'cheese':
-          state -= 0.4;
+          state.price -= 0.4;
           break;
         case 'meat':
-          state -= 1.3;
+          state.price -= 1.3;
           break;
         default:
           break;
       }
-      if (state < 3) state = 3;
+      if (state.price < 3) state.price = 3;
     },
   },
 });

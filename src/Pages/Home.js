@@ -9,11 +9,13 @@ import Navbar from '../Components/Navbar';
 import { displayBurger } from '../utils/displayBurger';
 
 const Burger = () => {
-  const lettuce = useSelector((state) => state?.counter?.lettuce);
-  const bacon = useSelector((state) => state?.counter?.bacon);
-  const cheese = useSelector((state) => state?.counter?.cheese);
-  const meat = useSelector((state) => state?.counter?.meat);
-  const price = useSelector((state) => state?.priceCalculator);
+  const lettuce = useSelector((state) => state?.rootReducer?.counter?.lettuce);
+  const bacon = useSelector((state) => state?.rootReducer?.counter?.bacon);
+  const cheese = useSelector((state) => state?.rootReducer?.counter?.cheese);
+  const meat = useSelector((state) => state?.rootReducer?.counter?.meat);
+  const price = useSelector(
+    (state) => state?.rootReducer?.priceCalculator?.price,
+  );
 
   const dispatch = useDispatch();
 
