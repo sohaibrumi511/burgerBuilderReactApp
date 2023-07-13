@@ -1,22 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { StyledNavbar, Logo, Image, Button } from './styles/navbar.styled';
+
 const Navbar = () => {
   return (
-    <div className="navbar">
-      <div className="logo">
+    <StyledNavbar>
+      <Logo>
         <Link to={'/home'}>
-          <img
-            alt="logo"
-            className="image"
-            src={require('../images/logo.png')}
-          ></img>
+          <Image alt="logo" src={require('../images/logo.png')}></Image>
         </Link>
-      </div>
-      <Link to={'/'}>
-        <button className="button">Sign In</button>
+      </Logo>
+      <Link style={{ textDecoration: 'none' }} to={'/'}>
+        <Button>Sign In</Button>
       </Link>
-    </div>
+    </StyledNavbar>
   );
 };
 
