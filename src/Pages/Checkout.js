@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { resetIngredient } from '../reducers/counter';
 import { resetPrice } from '../reducers/priceCalculator';
@@ -18,13 +18,6 @@ const Checkout = () => {
     country: '',
     email: '',
   });
-  const lettuce = useSelector((state) => state?.rootReducer?.counter?.lettuce);
-  const bacon = useSelector((state) => state?.rootReducer?.counter?.bacon);
-  const cheese = useSelector((state) => state?.rootReducer?.counter?.cheese);
-  const meat = useSelector((state) => state?.rootReducer?.counter?.meat);
-  const price = useSelector(
-    (state) => state?.rootReducer?.priceCalculator?.price,
-  );
 
   const dispatch = useDispatch();
 
